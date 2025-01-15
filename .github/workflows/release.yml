@@ -1,0 +1,16 @@
+name: "Build packages on release"
+
+on:
+  release:
+    types: [published]
+
+env:
+  JENKINS_URL: ${{ vars.JENKINS_URL }}
+  JENKINS_TOKEN: ${{ secrets.JENKINS_PACKAGES_AUTH_TOKEN }}
+
+jobs:
+  debian-12:
+    runs-on: ubuntu-latest
+    steps:
+      - name: curl
+        run: curl $JENKINS_URL/job/marco-package-debian-12/build?token=$JENKINS_TOKEN
