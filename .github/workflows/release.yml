@@ -4,6 +4,9 @@ on:
   release:
     types: [published]
 
+environment:
+  name: 'Jenkins'
+
 env:
   JENKINS_URL: ${{ vars.JENKINS_URL }}
   JENKINS_TOKEN: ${{ secrets.JENKINS_PACKAGES_AUTH_TOKEN }}
